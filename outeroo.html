@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV to Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="day-mode">
+    <div class="title">
+        <h1>Bonnaroo Schedule 2024</h1>
+        <h4>By Ponballoon</h4>
+
+        <a href="index.html"><button>To Bonnaroo</button></a>
+    </div>
+    
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('ponballoon', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Tip Me',
+        'floating-chat.donateButton.background-color': '#00b9fe77',
+        'floating-chat.donateButton.text-color': '#fff',
+      });
+    </script>
+
+    <div class="filters">
+        <label for="searchName">Search by Name:</label>
+        <input type="text" id="searchName" placeholder="Enter name to search...">
+        
+        <label for="filterLocation">Filter by Location:</label>
+        <select id="filterLocation" disabled>
+            <!-- Locations will be populated here by JavaScript -->
+        </select>
+        <label>
+            <input type="checkbox" id="enableLocationFilter"> Enable Location Filter
+        </label>
+    </div>
+
+    <div class="btn-row">
+        <button id="exportCSV">Export Selected as CSV</button>
+        <button id="exportICS">Export Selected as ICS</button>
+        <button id="toggleNightMode" class="btn btn-secondary">Toggle Night Mode</button>
+    </div>
+    
+    <button id="openModal" class="hoverButton">Selected Events</button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Selected Events</h2>
+            <ul id="selectedEventsList">
+                <!-- Selected events will be listed here -->
+            </ul>
+            <div class="btn-row">
+                <button id="exportCSV2">Export Selected as CSV</button>
+                <button id="exportICS2">Export Selected as ICS</button>
+            </div>
+        </div>
+    </div>
+
+    <table id="eventTable">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Event/Artist</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+    <script>
+        const csvUrl = 'Outeroo.csv'; 
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
