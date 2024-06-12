@@ -26,6 +26,37 @@ body.night-mode {
     padding: 10px 20px;
 }
 
+.btn-row-sm {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.sort-btn {
+    cursor: pointer;
+    padding: 0px 10px;
+    margin-left: 5px;
+    background-color: #79c531;
+    border: 2px solid black;
+    border-radius: 100vw;
+    font-family: Poppins, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 100%;
+    text-decoration: none;
+    display: flex;
+    position: relative;
+}
+
+.sort-asc {
+    background-color: rgb(255, 200, 183);
+}
+
+.sort-desc {
+    background-color: rgb(25, 133, 34);
+    color:white
+}
+
 @media (max-width: 600px) {
     .btn-row {
         flex-direction: column;

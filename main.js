@@ -32,6 +32,14 @@ toggleNightModeButton.addEventListener('click', () => {
     
 });
 
+document.querySelectorAll('.sort-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const columnIndex = parseInt(button.dataset.column);
+        const sortOrder = parseInt(button.dataset.order);
+        sortTable(columnIndex, sortOrder);
+    });
+});
+
 function updateSelectedEventsList() {
     selectedEventsList.innerHTML = ''; // Clear existing list
     Array.from(selectedEvents).forEach(event => {
@@ -229,6 +237,35 @@ async function main() {
     document.getElementById('enableLocationFilter').addEventListener('change', (event) => {
         document.getElementById('filterLocation').disabled = !event.target.checked;
         filterAndDisplayEvents();
+    });
+}
+
+function sortTable(columnIndex, sortOrder) {
+    const tbody = document.querySelector('#eventTable tbody');
+    const rows = Array.from(tbody.rows);
+
+    rows.sort((a, b) => {
+        const cellA = a.cells[columnIndex].textContent.trim();
+        const cellB = b.cells[columnIndex].textContent.trim();
+
+        if (columnIndex === 2) { // Date column
+            return sortOrder * (new Date(cellA) - new Date(cellB));
+        } else {
+            return sortOrder * cellA.localeCompare(cellB);
+        }
+    });
+
+    tbody.append(...rows);
+
+    // Update arrow indicators
+    const headers = document.querySelectorAll('#eventTable th');
+    headers.forEach((header, index) => {
+        if (index === columnIndex) {
+            header.classList.remove('sort-asc', 'sort-desc');
+            header.classList.add(sortOrder === 1 ? 'sort-asc' : 'sort-desc');
+        } else {
+            header.classList.remove('sort-asc', 'sort-desc');
+        }
     });
 }
 
